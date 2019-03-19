@@ -40,4 +40,17 @@ router.post('/', (req, res) => {
     })
 })
 
+router.delete('/:id', (req, res) => {
+    const {id} = req.params;
+
+    Posts
+    .remove(id)
+    .then(post => {
+        res.status(204).end();
+    })
+    .catch(error => {
+        res.status(500).json({message: 'Error deleting the post'})
+    })
+})
+
 module.exports = router;
